@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  dev:
+    image: node:18.18.0
+    volumes:
+    - .:/ws
+    entrypoint: bash -c "tail -f"
