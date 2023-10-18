@@ -9,3 +9,11 @@ services:
     working_dir: /ws/opinion-ate-2
     ports:
     - 14200:4200
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate-2
+    entrypoint: bash -cx "npm install && npx playwright test; tail -f"
+
