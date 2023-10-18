@@ -7,15 +7,15 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    ['html', { open: 'never', }, ],
-    ['list', { printSteps: true, }, ],
+    ['html', { open: 'never' }],
+    ['list', { printSteps: true }],
   ],
   use: {
     actionTimeout: 0,
     baseURL: process.env.E2E_BASE_URL || 'http://application:4200',
     trace: 'on-first-retry',
-    video: { mode: 'on', },
-    screenshot: { mode: 'on', fullPage: true, },
+    video: { mode: 'on' },
+    screenshot: { mode: 'on', fullPage: true },
     launchOptions: {
       slowMo: parseInt(process.env.E2E_SLOW_MO || 0),
     },
