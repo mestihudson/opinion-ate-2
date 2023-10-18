@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   use: {
     actionTimeout: 0,
-    baseURL: process.env.E2E_BASE_URL || 'http://dev:4200',
+    baseURL: process.env.E2E_BASE_URL || 'http://application:4200',
     trace: 'on-first-retry',
     video: { mode: 'on', },
     screenshot: { mode: 'on', fullPage: true, },
