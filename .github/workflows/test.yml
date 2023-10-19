@@ -11,12 +11,15 @@ jobs:
         with:
           node-version: 18
       - name: install dependencies
+        working-directory: ./opinion-ate-2
         run: npm ci
       - name: unit tests
         run: npm test
       - name: install playwright browsers
+        working-directory: ./opinion-ate-2
         run: npx playwright install --with-deps
       - name: e2e tests
+        working-directory: ./opinion-ate-2
         uses: E2E_BASE_URL='http://localhost:4200' npx playwright test
         with:
           start: npm start
