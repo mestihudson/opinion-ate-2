@@ -13,6 +13,9 @@ jobs:
       - name: install dependencies
         working-directory: ./opinion-ate-2
         run: npm ci
+      - name: lint
+        working-directory: ./opinion-ate-2
+        run: npm run lint
       - name: unit tests
         run: npm test
       - name: install playwright browsers
