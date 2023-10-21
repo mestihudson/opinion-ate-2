@@ -2,7 +2,7 @@
   "name": "opinion-ate-2",
   "version": "0.0.0",
   "scripts": {
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/opinion-ate-2",
     "ng": "ng",
     "start": "ng serve",
@@ -43,6 +43,7 @@
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "gh-pages": "^6.0.0",
     "jest": "^29.7.0",
     "jest-preset-angular": "^13.1.2",
     "prettier": "^3.0.3",
