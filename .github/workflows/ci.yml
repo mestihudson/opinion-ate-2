@@ -1,4 +1,4 @@
-name: test
+name: ci
 on: [push]
 
 jobs:
@@ -22,3 +22,4 @@ jobs:
     - name: e2e tests
       working-directory: ./opinion-ate-2
       run: E2E_BASE_URL='http://localhost:4200' npm run ci:e2e
+
