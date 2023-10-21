@@ -2,7 +2,8 @@
   "name": "opinion-ate-2",
   "version": "0.0.0",
   "scripts": {
-    "predeploy": "npm run build -- --base-href=./",
+    "add:version": "sed -i \"s#</title># [build => sha: ${GITHUB_SHA:-HEAD}, number: ${GITHUB_RUN_ID:-1}]</title>#g\" dist/*/index.html",
+    "predeploy": "npm run build -- --base-href=./ && npm run add:version",
     "deploy": "gh-pages -d dist/opinion-ate-2",
     "ng": "ng",
     "start": "ng serve",
