@@ -23,3 +23,21 @@ jobs:
       working-directory: ./opinion-ate-2
       run: E2E_BASE_URL='http://localhost:4200' npm run ci:e2e
 
+  deploy:
+    name: deploy
+    runs-on: ubuntu-22.04
+    needs: test
+    steps:
+    - uses: actions/checkout@v3
+    - name: install dependencies
+      working-directory: ./opinion-ate-2
+      run: npm ci
+    - name: deploy to environment
+      working-directory: ./opinion-ate-2
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        export CI=false
+        yarn deploy -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
