@@ -24,7 +24,6 @@ jobs:
       run: E2E_BASE_URL='http://localhost:4200' npm run ci:e2e
 
   deploy:
-    if: "!startsWith(github.event.head_commit.message, 'docs')"
     name: deploy
     runs-on: ubuntu-22.04
     needs: test
