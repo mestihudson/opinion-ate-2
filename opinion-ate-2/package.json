@@ -2,7 +2,7 @@
   "name": "opinion-ate-2",
   "version": "0.0.0",
   "scripts": {
-    "predeploy": "npm run build -- --base-href=./opinion-ate-2/",
+    "predeploy": "npm run build -- --base-href=./",
     "deploy": "gh-pages -d dist/opinion-ate-2",
     "ng": "ng",
     "start": "ng serve",
