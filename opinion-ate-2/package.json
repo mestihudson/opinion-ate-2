@@ -1,6 +1,7 @@
 {
   "name": "opinion-ate-2",
   "version": "0.0.0",
+  "homepage": "opinion-ate-2/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/opinion-ate-2",
