@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "e2e": "npx playwright test",
+    "ci:e2e": "start-server-and-test 'npm start' http://localhost:4200 'E2E_BASE_URL=http://localhost:4200 npm run e2e'",
     "test": "npx jest",
     "lint": "ng lint"
   },
