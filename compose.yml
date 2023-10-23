@@ -19,3 +19,12 @@ services:
     links:
       - "dev:application"
 
+  git:
+    image: node:18.18.0-alpine
+    volumes:
+    - .:/ws
+    - $HOME/.ssh:/root/.ssh
+    - $HOME/.gitconfig:/root/.gitconfig
+    working_dir: /ws
+    entrypoint: sh -cx "apk upgrade && apk add git openssh-client; tail -f"
+
