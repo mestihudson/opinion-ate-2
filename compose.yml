@@ -26,5 +26,5 @@ services:
     - $HOME/.ssh:/root/.ssh
     - $HOME/.gitconfig:/root/.gitconfig
     working_dir: /ws
-    entrypoint: sh -cx "apk upgrade && apk add git openssh-client; tail -f"
+    entrypoint: sh -cx "apk upgrade && apk add git openssh-client && npm i -g husky && husky install; tail -f"
 
