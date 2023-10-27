@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*", "**/node_modules/**", "**/playwright-report/**/*", "**/test-results/**/*", "**/.git/**/*", "**/dist/**/*"],
+  "ignorePatterns": ["projects/**/*", "**/node_modules/**", "**/playwright-report/**/*", "**/test-results/**/*", "**/.git/**/*", "**/dist/**/*", "**/coverage/**"],
   "overrides": [
     {
       "files": ["*.ts"],
