@@ -18,7 +18,7 @@ describe('RestaurantListComponent', () => {
       TestBed.createComponent(RestaurantListComponent);
     const component: RestaurantListComponent = fixture.componentInstance;
     fixture.detectChanges();
-    return { component };
+    return { fixture, component };
   };
 
   it('should render without errors', async () => {
@@ -37,5 +37,24 @@ describe('RestaurantListComponent', () => {
       },
     ]);
     expect(mockRestaurantListService.get).toHaveBeenCalled();
+  });
+
+  it('should display the restaurants', async () => {
+    const restaurants = [
+      { id: 1, name: 'Sushi Place' },
+      { id: 2, name: 'Pizza Place' },
+    ];
+    const mockRestaurantListService = {
+      get: jest.fn(() => of([...restaurants])),
+    };
+    const { fixture } = await renderComponent([
+      {
+        provide: RestaurantListService,
+        useValue: mockRestaurantListService,
+      },
+    ]);
+    expect(fixture.debugElement.nativeElement.textContent).toEqual(
+      expect.stringMatching(/(Sushi Place|Pizza Place)/),
+    );
   });
 });
