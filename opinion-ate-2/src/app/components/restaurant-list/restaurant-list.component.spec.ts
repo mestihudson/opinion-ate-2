@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, Observable } from 'rxjs';
 
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
+import { RestaurantModel } from '@/app/models/restaurant.model';
 import { RestaurantListService } from '@/app/services/restaurant-list.service';
 
 describe('RestaurantListComponent', () => {
@@ -21,7 +22,7 @@ describe('RestaurantListComponent', () => {
     return { fixture, component };
   };
   const mockRestaurantListService = {
-    get: (): Observable<{ id: number; name: string }[]> => of([]),
+    get: (): Observable<RestaurantModel[]> => of([]),
   };
   const provider = {
     provide: RestaurantListService,
