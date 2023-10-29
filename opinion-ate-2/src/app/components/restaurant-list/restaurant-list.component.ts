@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LoadRestaurantsInteractor } from '@/app/interactors/load-restaurants.interactor';
 import { RestaurantModel } from '@/app/models/restaurant.model';
-import { RestaurantListService } from '@/app/services/restaurant-list.service';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -9,10 +9,10 @@ import { RestaurantListService } from '@/app/services/restaurant-list.service';
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: RestaurantModel[] = [];
-  constructor(private service: RestaurantListService) {}
+  constructor(private loadRestaurants: LoadRestaurantsInteractor) {}
 
   ngOnInit() {
-    this.service.get().subscribe({
+    this.loadRestaurants.get().subscribe({
       next: (response) => {
         this.restaurants = response;
       },
