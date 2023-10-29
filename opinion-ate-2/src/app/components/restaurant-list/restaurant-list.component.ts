@@ -7,9 +7,14 @@ import { RestaurantListService } from '@/app/services/restaurant-list.service';
   templateUrl: './restaurant-list.component.html',
 })
 export class RestaurantListComponent implements OnInit {
+  restaurants: { id: number; name: string }[] = [];
   constructor(private service: RestaurantListService) {}
 
   ngOnInit() {
-    this.service.get();
+    this.service.get().subscribe({
+      next: (response) => {
+        this.restaurants = response;
+      },
+    });
   }
 }
