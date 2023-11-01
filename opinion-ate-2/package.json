@@ -2,7 +2,7 @@
   "name": "opinion-ate-2",
   "version": "0.0.0",
   "scripts": {
-    "add:version": "sed -i \"s#</title># [build => sha: ${GITHUB_SHA:-HEAD}, number: ${GITHUB_RUN_ID:-1}]</title>#g\" dist/*/index.html",
+    "add:version": "sed -i \"s#</title># [build => sha: ${GITHUB_SHA:-HEAD}, id: ${GITHUB_RUN_ID:-1}, number: ${GITHUB_RUN_NUMBER:-1}]</title>#g\" dist/*/index.html",
     "replace:api-hash-token": "sed -i \"s#API_HASH_TOKEN#${API_HASH_TOKEN:-ApiHashToken}#g\" dist/*/main.*.js",
     "predeploy": "npm run build -- --base-href=./ && npm run add:version && npm run replace:api-hash-token",
     "deploy": "gh-pages -d dist/opinion-ate-2",
