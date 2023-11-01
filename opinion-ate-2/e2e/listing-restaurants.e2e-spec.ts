@@ -6,10 +6,12 @@ test.describe('Listing Restaurants', () => {
     const pizzaPlace = 'Pizza Place';
 
     await page.route('https://api.outsidein.dev/*/restaurants', (route) => {
-      return route.fulfill([
-        { id: 1, name: sushiPlace },
-        { id: 2, name: pizzaPlace },
-      ]);
+      return route.fulfill({
+        json: [
+          { id: 1, name: sushiPlace },
+          { id: 2, name: pizzaPlace },
+        ],
+      });
     });
 
     await page.goto('/');
