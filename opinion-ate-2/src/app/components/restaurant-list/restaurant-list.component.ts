@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { LoadRestaurantsInteractor } from '@/app/interactors/load-restaurants.interactor';
 import { RestaurantModel } from '@/app/models/restaurant.model';
@@ -8,14 +9,10 @@ import { RestaurantModel } from '@/app/models/restaurant.model';
   templateUrl: './restaurant-list.component.html',
 })
 export class RestaurantListComponent implements OnInit {
-  restaurants: RestaurantModel[] = [];
+  restaurants$: Observable<RestaurantModel[]> = of([]);
   constructor(private loadRestaurants: LoadRestaurantsInteractor) {}
 
   ngOnInit() {
-    this.loadRestaurants.get().subscribe({
-      next: (response) => {
-        this.restaurants = response;
-      },
-    });
+    this.restaurants$ = this.loadRestaurants.get();
   }
 }
