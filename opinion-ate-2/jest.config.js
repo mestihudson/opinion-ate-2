@@ -9,4 +9,7 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
     prefix: '<rootDir>/',
   }),
+  collectCoverageFrom: [
+    '**/src/app/**/*.{ts,html}',
+  ],
 };
