@@ -13,8 +13,7 @@ export class LoadRestaurantsHttpAdapter extends LoadRestaurantsInteractor {
   }
 
   get(): Observable<RestaurantModel[]> {
-    const token = 'API_HASH_TOKEN';
-    const url = `${environment.api}/${token}/restaurants`;
+    const url = `${environment.api}/${environment.token}/restaurants`;
     return this.http.get<RestaurantModel[]>(url);
   }
 }
