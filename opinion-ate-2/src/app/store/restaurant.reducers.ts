@@ -14,6 +14,12 @@ const reducer = createReducer<RestaurantStateModel>(
       ...state,
     };
   }),
+  on(fromRestaurants.loadRestaurantsSuccess, (state, { restaurants }) => {
+    return {
+      ...state,
+      restaurants,
+    };
+  }),
 );
 
 export function restaurantsReducer(
