@@ -10,6 +10,7 @@ import { RestaurantListComponent } from '@/app/components/restaurant-list/restau
 import { RestaurantScreenComponent } from '@/app/components/restaurant-screen/restaurant-screen.component';
 import { LoadRestaurantsInteractor } from '@/app/interactors/load-restaurants.interactor';
 import { RestaurantStoreModule } from '@/app/store/restaurant-store.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RestaurantStoreModule } from '@/app/store/restaurant-store.module';
     EffectsModule.forRoot(),
     StoreModule.forRoot(),
     RestaurantStoreModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
