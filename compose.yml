@@ -28,3 +28,9 @@ services:
     working_dir: /ws
     entrypoint: sh -cx "apk upgrade && apk add git openssh-client && npm i -g husky && husky install; tail -f"
 
+  unit:
+    image: node:18.18.0
+    volumes:
+    - .:/ws
+    working_dir: /ws/opinion-ate-2
+    entrypoint: bash -c "npm install && npm test -- --watchAll --verbose; tail -f"
