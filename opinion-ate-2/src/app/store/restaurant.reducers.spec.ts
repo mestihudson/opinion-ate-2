@@ -23,4 +23,19 @@ describe('RestaurantReducers', () => {
       restaurants: [],
     });
   });
+
+  it('should change state when loadRestaurantsSuccess', () => {
+    const mockedRestaurantList: RestaurantModel[] = [
+      { id: 1, name: 'primeiro 1' },
+    ];
+    const result = restaurantsReducer(
+      initialState,
+      fromRestaurants.loadRestaurantsSuccess({
+        restaurants: mockedRestaurantList,
+      }),
+    );
+    expect(result).toEqual({
+      restaurants: mockedRestaurantList,
+    });
+  });
 });
