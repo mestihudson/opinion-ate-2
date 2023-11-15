@@ -1,12 +1,15 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from '@/app/app.component';
-import { LoadRestaurantsHttpAdapter } from '@/app/adapters/load-restaurants-http.adapter';
+import { LoadRestaurantsNgrxAdapter } from '@/app/adapters/load-restaurants-ngrx.adapter';
 import { RestaurantListComponent } from '@/app/components/restaurant-list/restaurant-list.component';
 import { RestaurantScreenComponent } from '@/app/components/restaurant-screen/restaurant-screen.component';
 import { LoadRestaurantsInteractor } from '@/app/interactors/load-restaurants.interactor';
+import { RestaurantStoreModule } from '@/app/store/restaurant-store.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,17 @@ import { LoadRestaurantsInteractor } from '@/app/interactors/load-restaurants.in
     RestaurantListComponent,
     RestaurantScreenComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    EffectsModule.forRoot(),
+    StoreModule.forRoot(),
+    RestaurantStoreModule,
+  ],
   providers: [
     {
       provide: LoadRestaurantsInteractor,
-      useClass: LoadRestaurantsHttpAdapter,
+      useClass: LoadRestaurantsNgrxAdapter,
     },
   ],
   bootstrap: [AppComponent],
