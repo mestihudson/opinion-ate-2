@@ -2,17 +2,20 @@
   "name": "opinion-ate-2",
   "version": "0.0.0",
   "scripts": {
-    "add:version": "sed -i \"s#</title># [build => sha: ${GITHUB_SHA:-HEAD}, number: ${GITHUB_RUN_ID:-1}]</title>#g\" dist/*/index.html",
-    "predeploy": "npm run build -- --base-href=./ && npm run add:version",
+    "add:version": "sed -i \"s#</title># [build => sha: ${GITHUB_SHA:-HEAD}, id: ${GITHUB_RUN_ID:-1}, number: ${GITHUB_RUN_NUMBER:-1}]</title>#g\" dist/*/index.html",
+    "replace:api-hash-token": "sed -i \"s#API_HASH_TOKEN#${API_HASH_TOKEN:-ApiHashToken}#g\" dist/*/main.*.js",
+    "predeploy": "npm run build -- --base-href=./ && npm run add:version && npm run replace:api-hash-token",
     "deploy": "gh-pages -d dist/opinion-ate-2",
     "ng": "ng",
+    "prestart": "[ ! -e src/environments/environment.development.ts ] && cp -frv src/environments/environment.development.ts.template src/environments/environment.development.ts || echo ok",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "e2e": "npx playwright test",
     "ci:e2e": "start-server-and-test 'npm start' http://localhost:4200 'E2E_BASE_URL=http://localhost:4200 npm run e2e'",
     "test": "npx jest",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepare": "cd .. && npx husky install"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,8 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@ngrx/effects": "^16.3.0",
+    "@ngrx/store": "^16.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -45,6 +50,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "gh-pages": "^6.0.0",
+    "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-preset-angular": "^13.1.2",
     "prettier": "^3.0.3",

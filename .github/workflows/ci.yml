@@ -40,4 +40,5 @@ jobs:
         npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        API_HASH_TOKEN: ${{ secrets.API_HASH_TOKEN }}
 
