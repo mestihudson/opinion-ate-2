@@ -1,0 +1,7 @@
+.content {
+  display: flex;
+  justify-content: center;
+}
+.content > :first-child {
+  width: 1200px;
+}
